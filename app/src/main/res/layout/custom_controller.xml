@@ -4,16 +4,17 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#80000000">
+
     <ImageView
-        android:id="@+id/exo_lock"
+        android:id="@+id/imageViewLock"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
         android:padding="10dp"
         android:src="@drawable/ic_baseline_lock_open"
-        android:layout_alignParentRight="true"
         android:theme="@style/ClickableView" />
     <LinearLayout
-        android:id="@+id/sec_controlvid1"
+        android:id="@+id/linearLayoutControlUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -23,7 +24,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/exo_rew"
             android:src="@drawable/ic_baseline_replay"
-            android:layout_marginRight="50dp"
+            android:layout_marginEnd="50dp"
             android:theme="@style/ClickableView"
             />
         <ImageView
@@ -45,13 +46,13 @@
             android:layout_height="wrap_content"
             android:id="@+id/exo_ffwd"
             android:src="@drawable/ic_baseline_forward"
-            android:layout_marginLeft="50dp"
+            android:layout_marginStart="50dp"
             android:theme="@style/ClickableView"
             />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/sec_controlvid2"
+        android:id="@+id/linearLayoutControlBottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -73,10 +74,9 @@
                 android:layout_height="wrap_content"
                 android:text="/"
                 android:textColor="#CBCDC8"
-                android:layout_marginRight="4dp"
                 android:layout_marginEnd="4dp"/>
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:id="@+id/exo_duration"
@@ -85,20 +85,19 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/exo_controls_fullscreen_enter"
-                android:id="@+id/bt_fullscreen"
+                android:id="@+id/imageViewFullScreen"
                 android:theme="@style/ClickableView"
                 />
         </LinearLayout>
         <com.google.android.exoplayer2.ui.DefaultTimeBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
             android:id="@+id/exo_progress"
             android:layout_marginTop="-8dp"
             app:unplayed_color="#45424E"
             app:buffered_color="#95989F"
-            app:played_color="#FF0000"
-            app:scrubber_color="#FF0000"
+            app:played_color="#FF00FF"
+            app:scrubber_color="#FF00FF"
             />
     </LinearLayout>
 </RelativeLayout>

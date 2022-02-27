@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../.gradle/caches/transforms-3/f4da510f8d6fde0957c18a1307415eb8/transformed/exoplayer-ui-2.16.1/res/layout/exo_player_view.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/drawable/ic_baseline_forward.xml" value="0.197" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.17572463768115942" />
         <entry key="app/src/main/res/layout/custom_controller.xml" value="0.1585144927536232" />

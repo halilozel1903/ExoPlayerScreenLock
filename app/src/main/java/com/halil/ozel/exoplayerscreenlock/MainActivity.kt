@@ -3,20 +3,17 @@ package com.halil.ozel.exoplayerscreenlock
 import android.annotation.SuppressLint
 import android.content.pm.ActivityInfo
 import android.content.res.Configuration
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Layout
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
-import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.source.hls.HlsMediaSource
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSource
 import com.halil.ozel.exoplayerscreenlock.databinding.ActivityMainBinding
-import com.halil.ozel.exoplayerscreenlock.databinding.CustomControllerBinding
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,9 +28,11 @@ class MainActivity : AppCompatActivity() {
     private var playWhenReady = true
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var customControllerBinding: CustomControllerBinding
     private var exoPlayer: ExoPlayer? = null
-    lateinit var bt_fullscreen: ImageView
+    private lateinit var imageViewFullScreen: ImageView
+    private lateinit var imageViewLock: ImageView
+    private lateinit var linearLayoutControlUp: LinearLayout
+    private lateinit var linearLayoutControlBottom: LinearLayout
 
     @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,57 +41,20 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
         preparePlayer()
-        bt_fullscreen =  findViewById(R.id.bt_fullscreen)
-        val bt_lockscreen = findViewById<ImageView>(R.id.exo_lock)
+        imageViewFullScreen = findViewById(R.id.imageViewFullScreen)
+        imageViewLock = findViewById(R.id.imageViewLock)
+        linearLayoutControlUp = findViewById(R.id.linearLayoutControlUp)
+        linearLayoutControlBottom = findViewById(R.id.linearLayoutControlBottom)
 
-        //customControllerBinding = CustomControllerBinding.inflate(layoutInflater,binding.player,true)
+        setLockScreen()
+        setFullScreen()
 
-
-        bt_fullscreen.setOnClickListener {
-
-            if (!isFullScreen) {
-                bt_fullscreen.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        applicationContext,
-                        R.drawable.ic_baseline_fullscreen_exit
-                    )
-                )
-                requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
-            } else {
-                bt_fullscreen.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        applicationContext,
-                        R.drawable.ic_baseline_fullscreen
-                    )
-                )
-                requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-            }
-            isFullScreen = !isFullScreen
-        }
-
-        bt_lockscreen.setOnClickListener {
-            if (!isLock) {
-                bt_lockscreen.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        applicationContext,
-                        R.drawable.ic_baseline_lock
-                    )
-                )
-            } else {
-                bt_lockscreen.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        applicationContext,
-                        R.drawable.ic_baseline_lock_open
-                    )
-                )
-            }
-            isLock = !isLock
-            lockScreen(isLock)
-        }
     }
 
     private fun preparePlayer() {
-        exoPlayer = ExoPlayer.Builder(this).build()
+        exoPlayer = ExoPlayer.Builder(this).setSeekBackIncrementMs(5000)
+            .setSeekForwardIncrementMs(5000)
+            .build()
         exoPlayer?.playWhenReady = true
         binding.player.player = exoPlayer
         val defaultHttpDataSourceFactory = DefaultHttpDataSource.Factory()
@@ -106,31 +68,69 @@ class MainActivity : AppCompatActivity() {
         exoPlayer?.prepare()
     }
 
-    private fun releasePlayer() {
-        exoPlayer?.let { player ->
-            playbackPosition = player.currentPosition
-            playWhenReady = player.playWhenReady
-            player.release()
-            exoPlayer = null
+
+    private fun lockScreen(lock: Boolean) {
+
+        if (lock) {
+            linearLayoutControlUp.visibility = View.INVISIBLE
+            linearLayoutControlBottom.visibility = View.INVISIBLE
+        } else {
+            linearLayoutControlUp.visibility = View.VISIBLE
+            linearLayoutControlBottom.visibility = View.VISIBLE
         }
     }
 
-    private fun lockScreen(lock: Boolean) {
-        val sec_mid = findViewById<LinearLayout>(R.id.sec_controlvid1)
-        val sec_bottom = findViewById<LinearLayout>(R.id.sec_controlvid2)
-        if (lock) {
-            sec_mid.visibility = View.INVISIBLE
-            sec_bottom.visibility = View.INVISIBLE
-        } else {
-            sec_mid.visibility = View.VISIBLE
-            sec_bottom.visibility = View.VISIBLE
+    private fun setLockScreen() {
+        imageViewLock.setOnClickListener {
+            if (!isLock) {
+                imageViewLock.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        applicationContext,
+                        R.drawable.ic_baseline_lock
+                    )
+                )
+            } else {
+                imageViewLock.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        applicationContext,
+                        R.drawable.ic_baseline_lock_open
+                    )
+                )
+            }
+            isLock = !isLock
+            lockScreen(isLock)
+        }
+    }
+
+    @SuppressLint("SourceLockedOrientationActivity")
+    private fun setFullScreen() {
+        imageViewFullScreen.setOnClickListener {
+
+            if (!isFullScreen) {
+                imageViewFullScreen.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        applicationContext,
+                        R.drawable.ic_baseline_fullscreen_exit
+                    )
+                )
+                requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
+            } else {
+                imageViewFullScreen.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        applicationContext,
+                        R.drawable.ic_baseline_fullscreen
+                    )
+                )
+                requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+            }
+            isFullScreen = !isFullScreen
         }
     }
 
     override fun onBackPressed() {
         if (isLock) return
         if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            bt_fullscreen.performClick()
+            imageViewFullScreen.performClick()
         } else super.onBackPressed()
 
     }
