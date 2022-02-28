@@ -1,4 +1,4 @@
-# How to add Lock Screen 🔓 and Full Screen 📺 mod in ExoPlayer ▶️
+# How to add Lock Screen 🔓 & Full Screen 📺 mod in ExoPlayer ▶️
 
 ![ExoPlayer](https://miro.medium.com/max/1400/1*4u9gHCST9NfXnr-xlUO9tg.png)
 
