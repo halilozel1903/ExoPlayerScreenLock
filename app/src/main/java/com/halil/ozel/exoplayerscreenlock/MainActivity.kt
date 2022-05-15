@@ -17,13 +17,6 @@ import com.halil.ozel.exoplayerscreenlock.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    companion object {
-        const val URL =
-            "http://185.184.208.112/contents/7715ADCD-3948-4973-9561-580D2B72BA75/HLS/IOS-MOB-HLS-FP/master.m3u8"
-        var isFullScreen = false
-        var isLock = false
-    }
-
     private var playbackPosition = 0L
     private var playWhenReady = true
 
@@ -70,7 +63,6 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun lockScreen(lock: Boolean) {
-
         if (lock) {
             linearLayoutControlUp.visibility = View.INVISIBLE
             linearLayoutControlBottom.visibility = View.INVISIBLE
@@ -132,7 +124,6 @@ class MainActivity : AppCompatActivity() {
         if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             imageViewFullScreen.performClick()
         } else super.onBackPressed()
-
     }
 
 
@@ -149,5 +140,12 @@ class MainActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         exoPlayer?.pause()
+    }
+
+    companion object {
+        const val URL =
+            "http://185.184.208.112/contents/7715ADCD-3948-4973-9561-580D2B72BA75/HLS/IOS-MOB-HLS-FP/master.m3u8"
+        var isFullScreen = false
+        var isLock = false
     }
 }
