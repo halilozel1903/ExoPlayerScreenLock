@@ -20,7 +20,11 @@ Another popular feature on Netflix recently is screen locking. The user can cont
 
 <img src="https://cdn-images-1.medium.com/max/2400/1*iRea2doBvLdK0syTGCtdmg.png" width="300" />   <img src="https://cdn-images-1.medium.com/max/2400/1*pnq8nE_HgvO9vRTXKzB2xw.png" width="300" />
 
+## Donation 💸
 
+If this project help 💁 you, Can you give me a cup of coffee? ☕
+
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/halilozel1903)
 
 ## License ℹ️
 ```
