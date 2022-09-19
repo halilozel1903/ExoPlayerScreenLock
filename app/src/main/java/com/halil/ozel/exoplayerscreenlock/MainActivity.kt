@@ -119,6 +119,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         if (isLock) return
         if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
@@ -144,7 +145,7 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         const val URL =
-            "http://185.184.208.112/contents/7715ADCD-3948-4973-9561-580D2B72BA75/HLS/IOS-MOB-HLS-FP/master.m3u8"
+            "https://d1gnaphp93fop2.cloudfront.net/videos/multiresolution/rendition_new10.m3u8"
         var isFullScreen = false
         var isLock = false
     }
