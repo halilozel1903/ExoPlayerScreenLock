@@ -38,15 +38,13 @@ class MainActivity : AppCompatActivity() {
         imageViewLock = findViewById(R.id.imageViewLock)
         linearLayoutControlUp = findViewById(R.id.linearLayoutControlUp)
         linearLayoutControlBottom = findViewById(R.id.linearLayoutControlBottom)
-
         setLockScreen()
         setFullScreen()
-
     }
 
     private fun preparePlayer() {
-        exoPlayer = ExoPlayer.Builder(this).setSeekBackIncrementMs(5000)
-            .setSeekForwardIncrementMs(5000)
+        exoPlayer = ExoPlayer.Builder(this).setSeekBackIncrementMs(MILLIS)
+            .setSeekForwardIncrementMs(MILLIS)
             .build()
         exoPlayer?.playWhenReady = true
         binding.player.player = exoPlayer
@@ -144,9 +142,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val URL =
+        private const val URL =
             "https://d1gnaphp93fop2.cloudfront.net/videos/multiresolution/rendition_new10.m3u8"
         var isFullScreen = false
         var isLock = false
+        private const val MILLIS = 5000L
     }
 }
