@@ -30,9 +30,7 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setView()
         preparePlayer()
         imageViewFullScreen = findViewById(R.id.imageViewFullScreen)
         imageViewLock = findViewById(R.id.imageViewLock)
@@ -40,6 +38,12 @@ class MainActivity : AppCompatActivity() {
         linearLayoutControlBottom = findViewById(R.id.linearLayoutControlBottom)
         setLockScreen()
         setFullScreen()
+    }
+
+    private fun setView() {
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
     }
 
     private fun preparePlayer() {
