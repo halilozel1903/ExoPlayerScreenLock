@@ -32,10 +32,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setView()
         preparePlayer()
-        imageViewFullScreen = findViewById(R.id.imageViewFullScreen)
-        imageViewLock = findViewById(R.id.imageViewLock)
-        linearLayoutControlUp = findViewById(R.id.linearLayoutControlUp)
-        linearLayoutControlBottom = findViewById(R.id.linearLayoutControlBottom)
+        setFindViewById()
         setLockScreen()
         setFullScreen()
     }
@@ -44,6 +41,13 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+    }
+
+    private fun setFindViewById() {
+        imageViewFullScreen = findViewById(R.id.imageViewFullScreen)
+        imageViewLock = findViewById(R.id.imageViewLock)
+        linearLayoutControlUp = findViewById(R.id.linearLayoutControlUp)
+        linearLayoutControlBottom = findViewById(R.id.linearLayoutControlBottom)
     }
 
     private fun preparePlayer() {
