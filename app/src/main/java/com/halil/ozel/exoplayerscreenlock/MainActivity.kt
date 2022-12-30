@@ -61,10 +61,12 @@ class MainActivity : AppCompatActivity() {
             MediaItem.fromUri(URL)
         val mediaSource =
             HlsMediaSource.Factory(defaultHttpDataSourceFactory).createMediaSource(mediaItem)
-        exoPlayer?.setMediaSource(mediaSource)
-        exoPlayer?.seekTo(playbackPosition)
-        exoPlayer?.playWhenReady = playWhenReady
-        exoPlayer?.prepare()
+        exoPlayer?.apply {
+            setMediaSource(mediaSource)
+            seekTo(playbackPosition)
+            playWhenReady = playWhenReady
+            prepare()
+        }
     }
 
 
@@ -152,8 +154,8 @@ class MainActivity : AppCompatActivity() {
     companion object {
         private const val URL =
             "https://d1gnaphp93fop2.cloudfront.net/videos/multiresolution/rendition_new10.m3u8"
-        var isFullScreen = false
-        var isLock = false
+        private var isFullScreen = false
+        private var isLock = false
         private const val MILLIS = 5000L
     }
 }
