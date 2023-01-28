@@ -51,8 +51,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun preparePlayer() {
-        exoPlayer = ExoPlayer.Builder(this).setSeekBackIncrementMs(MILLIS)
-            .setSeekForwardIncrementMs(MILLIS)
+        exoPlayer = ExoPlayer.Builder(this).setSeekBackIncrementMs(INCREMENT_MILLIS)
+            .setSeekForwardIncrementMs(INCREMENT_MILLIS)
             .build()
         exoPlayer?.playWhenReady = true
         binding.player.player = exoPlayer
@@ -156,6 +156,6 @@ class MainActivity : AppCompatActivity() {
             "https://d1gnaphp93fop2.cloudfront.net/videos/multiresolution/rendition_new10.m3u8"
         private var isFullScreen = false
         private var isLock = false
-        private const val MILLIS = 5000L
+        private const val INCREMENT_MILLIS = 5000L
     }
 }
