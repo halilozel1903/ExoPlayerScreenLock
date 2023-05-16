@@ -18,7 +18,6 @@ import com.halil.ozel.exoplayerscreenlock.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private var playbackPosition = 0L
-    private var playWhenReady = true
 
     private lateinit var binding: ActivityMainBinding
     private var exoPlayer: ExoPlayer? = null
