@@ -22,7 +22,7 @@ Another popular feature on Netflix recently is screen locking. The user can cont
 
 ## Donation 💸
 
-If this project help 💁 you, Can you give me a cup of coffee? ☕
+Do you want to support me? ☕
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/halilozel1903)
 
