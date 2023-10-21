@@ -104,7 +104,6 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("SourceLockedOrientationActivity")
     private fun setFullScreen() {
         imageViewFullScreen.setOnClickListener {
-
             if (!isFullScreen) {
                 imageViewFullScreen.setImageDrawable(
                     ContextCompat.getDrawable(
@@ -151,8 +150,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val URL =
-            "https://d1gnaphp93fop2.cloudfront.net/videos/multiresolution/rendition_new10.m3u8"
+        private const val URL = "https://d1gnaphp93fop2.cloudfront.net/videos/multiresolution/rendition_new10.m3u8"
         private var isFullScreen = false
         private var isLock = false
         private const val INCREMENT_MILLIS = 5000L
