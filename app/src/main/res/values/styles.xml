@@ -2,7 +2,30 @@
 <resources>
 
     <style name="ClickableView">
-        <item name="colorControlHighlight">@android:color/darker_gray</item>
+        <item name="colorControlHighlight">#33FFFFFF</item>
         <item name="android:background">?selectableItemBackgroundBorderless</item>
+    </style>
+
+    <style name="PlayerControlButton" parent="ClickableView">
+        <item name="android:padding">10dp</item>
+        <item name="android:tint">@color/player_text_primary</item>
+    </style>
+
+    <style name="PlayerPrimaryControlButton" parent="ClickableView">
+        <item name="android:background">@drawable/bg_primary_control</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:tint">@color/player_on_accent</item>
+    </style>
+
+    <style name="PlayerTimeText">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:textColor">@color/player_text_primary</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="PlayerTimeTextMuted" parent="PlayerTimeText">
+        <item name="android:textColor">@color/player_text_secondary</item>
+        <item name="android:textStyle">normal</item>
     </style>
 </resources>
